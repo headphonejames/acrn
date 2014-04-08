@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="lib/jquery.mobile-1.3.2.min.css" />
+        <link rel="stylesheet" href="css/crn.css" />
+
+        <script src="../lib/jquery-1.10.1.min.js"></script>
+
+        <script type="text/javascript">
+
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-1678415-1']);
+            _gaq.push(['_trackPageview']);
+
+            (function() {
+                var ga = document.createElement('script');
+                ga.type = 'text/javascript';
+                ga.async = true;
+                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(ga, s);
+            })();
+
+        </script>
+
+        <!-- Start of StatCounter Code for Default Guide -->
+        <script type="text/javascript">
+            var sc_project = 9182035;
+            var sc_invisible = 1;
+            var sc_security = "a35f2d81";
+            var scJsHost = (("https:" == document.location.protocol) ?
+                    "https://secure." : "http://www.");
+            document.write("<sc" + "ript type='text/javascript' src='" +
+                    scJsHost +
+                    "statcounter.com/counter/counter.js'></" + "script>");
+        </script>
+    <!-- End of StatCounter Code for Default Guide -->
+
+    <script src="lib/jquery.mobile-1.3.2.min.js"></script>
+
+
+    <script src="lib/Audiolet.js"></script>
+    <script src="js/mobile.js"></script>
+    <script src="js/ACRN.js"></script>
+    <script src="lib/jquery_jeditable-master/jquery.jeditable.js"></script>
+    <script src="lib/modernizr.custom.69132.js"></script>
+    <script src="lib/jquery-timer-master/jquery.timer.js"></script>
+    <!--<script src="../lib/bootstrap-3.0.0-wip/dist/js/bootstrap.min.js"></script>-->
+    <!-- Bootstrap core CSS -->
+    <!--<link href="../lib/bootstrap-3.0.0-wip/dist/css/bootstrap.min.css" rel="stylesheet">-->
+</head>
+
+
+<body>
+    <!-- Home -->
+    <div data-role="page" id="page1">
+        <div data-theme="a" data-role="header">
+            <h3>
+                ACRM Tinnitus Protocol
+            </h3>
+            <div data-role="navbar" data-iconpos="top">
+                <ul>
+                    <li>
+                        <a data-transition="fade" data-theme="" data-icon="" id="playToneButton" onclick="playTone()">
+                            Play Tone
+                        </a>
+                    </li>
+                    <li>
+                        <a data-transition="fade" data-theme="" data-icon="" id="playACRNButton" onclick="playACRN()">
+                            Play ACRN
+                        </a>
+                    </li>
+                    <li>
+                        <a data-transition="fade" data-theme="" data-icon="" onclick="stop()">
+                            Stop Audio
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div data-role="content">
+            <div data-role="fieldcontain">
+                <label for="slider1">
+                    Frequency (in hz)                     
+                </label><br/>
+                <input id="freqSlider" type="range" name="slider" value="8125" min="1" max="15000"
+                       data-highlight="false" data-theme="b">
+            </div>
+            <div data-role="fieldcontain">
+                <label for="slider2">
+                    Volume
+                </label><br/>
+                <input id="volSlider" type="range" name="slider" value="50" min="0" max="100"
+                       data-highlight="false" data-theme="b">
+            </div>
+            <br/>
+            Frequencies in current pattern: <span id="freqPattern"></span> <br/><br/>
+            Elapsed time: <span id="stopwatch">00:00:00</span>
+            <br/>
+        </div>
+        <div data-role="navbar" data-iconpos="bottom">
+            <ul>
+                <li>
+                    <a href="http://www.generalfuzz.net" data-transition="fade" data-theme="" data-icon="">
+                        Made by general fuzz
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</body>
+
+</html>

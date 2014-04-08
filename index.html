@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+
+<!--
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+        <link rel="stylesheet" href="css/crn.css" />
+                <script type="text/javascript">
+        
+                    var _gaq = _gaq || [];
+                    _gaq.push(['_setAccount', 'UA-1678415-1']);
+                    _gaq.push(['_trackPageview']);
+        
+                    (function() {
+                        var ga = document.createElement('script');
+                        ga.type = 'text/javascript';
+                        ga.async = true;
+                        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                        var s = document.getElementsByTagName('script')[0];
+                        s.parentNode.insertBefore(ga, s);
+                    })();
+        
+                </script>
+        <!-- Start of StatCounter Code for Default Guide -->
+                <script type="text/javascript">
+                    var sc_project = 9182035;
+                    var sc_invisible = 1;
+                    var sc_security = "a35f2d81";
+                    var scJsHost = (("https:" == document.location.protocol) ?
+                            "https://secure." : "http://www.");
+                    document.write("<sc" + "ript type='text/javascript' src='" +
+                            scJsHost +
+                            "statcounter.com/counter/counter.js'></" + "script>");
+                </script>
+        <!-- End of StatCounter Code for Default Guide -->
+
+        <script src="lib/jquery-1.10.1.min.js"></script>
+
+        <!--        <script>
+                    if ((screen.width < 1024) && (screen.height < 768)) {
+                        window.location = 'http://www.generalfuzz.net/acrn/mobile.html';
+                    }
+                </script>-->
+        <script src="lib/jquery-ui-1.10.3.custom.min.js"></script>
+        <!--<script src="../lib/jquery-ui-1.10.3/ui/minified/jquery-ui.min.js"></script>-->
+
+        <script src="lib/Audiolet.js"></script>
+
+        <script src="js/ACRN.js"></script>
+        <script src="js/desktop.js"></script>
+        <script src="lib/jquery_jeditable-master/jquery.jeditable.js"></script>
+        <script src="lib/modernizr.custom.69132.js"></script>
+        <script src="lib/jquery-timer-master/jquery.timer.js"></script>
+        <script src="lib/bootstrap-3.0.0-wip/dist/js/bootstrap.min.js"></script>
+
+
+        <!-- Bootstrap core CSS -->
+        <link href="lib/bootstrap-3.0.0-wip/dist/css/bootstrap.min.css" rel="stylesheet">
+    </head>
+
+
+    <body>
+        <div class="navbar navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <span class="projTitle navbar-brand">ACRN Tinnitus Protocol</span>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="pull-right nav navbar-nav">
+                        <li><a href="http://www.generalfuzz.net/blog/?cat=30">About</a></li>
+                        <li><a href="http://www.generalfuzz.net/contact.php">Contact</a></li>
+                        <li><a class="music" href="http://www.generalfuzz.net/tunes.php?album=1">Music</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="container">
+            <p>This is my attempt at implementing the <a href="http://www.tinnitus.org.uk/acoustic-cr-neuromodulation">Acoustic Coordinated Reset Neuromodulation</a> tinnitus treatment protocol 
+                using <a href="http://www.thetinnitusclinic.co.uk/downloads/Tass%20et%20al_RNN%202012_Counteracting%20Tinnitus%20by%20Acoustic%20CR%20Neuromodulation.pdf">this paper</a> as a guide. 
+                This page will probably only work with a relatively modern html browser.</p>
+            <p>First try to match your tinnitus frequency using the "Play Single Frequency" button and then 
+                start the protocol with the "Play ACRN" button. 
+                Individual frequency values and volume can be adjusted by clicking on them.
+            </p>
+            <p>Inspired by <a href="http://www.tinnitustalk.com/threads/acoustic-cr%C2%AE-neuromodulation-do-it-yourself-guide.1469/">this</a> 
+                thread on <a href="http://www.tinnitustalk.com">tinnitustalk.com</a> and <a href="http://www.reddit.com/r/tinnitus/comments/15x99f/recent_tinnitus_study_and_my_attempt_at_utilizing/">this</a>
+                reddit thread. <a href="http://www.generalfuzz.net/contact.php">Feedback and suggestions</a> are most welcome.</p>
+            <br/>
+            <section id="play">
+                <button type="button" class="btn btn-default" id="playToneButton" onclick="playTone();">Play Single Frequency</button>
+                <button type="button" class="btn btn-default" id="playACRNButton" onclick="playACRN();">Play ACRN</button>
+                <button type="button" class="btn btn-default" id="stopButton" onclick="stop();">Stop Audio</button>
+            </section>
+            <br/>
+            <div class="freqSliderContainer">
+                <span class="freqSliderText">
+                    Frequency: <span class="editFreq" id="freqValue"></span> hz 
+                </span>
+                <span id="freqSlider" class="freqSliderSize"></span>         
+            </div>
+            <br/>
+            <div class="volSlider" id="volSliderContainer">
+                Volume: 
+                <span id="volSlider" class="volSliderSize"></span>
+            </div>
+            <div id="freqAdjustContainer">
+                <div class="freqVolSlider">
+                    <span class="editFreq" id="freqValAdjust"></span>&nbsp;hz volume: 
+                    <span id="freqVolSlider" class="volSliderSize"></span>
+                </div>
+                
+                <button type="button" class="btn btn-default" id="hideButton" onclick="hideFreqAdjust();">Hide Frequency Adjust</button>
+            </div>
+            Frequencies in current pattern: <span id="freqPattern"></span>
+            
+             <br/><br/>
+            Elapsed time: <span id="stopwatch">00:00:00</span>
+            <br/>
+        </div>
+    </body>
+
+</html>
