@@ -1,0 +1,104 @@
+.freqSliderSize {
+    margin-left: 150px;
+    display: block;
+}
+
+.freqSliderContainer {
+}
+
+.freqSliderText {
+    float:left;
+    margin-top: -5px;
+}
+
+.volSliderSize {
+    width:120px; 
+    float:right; 
+    margin-top: 4px;
+}
+
+.volSlider {
+    width: 180px;
+    height: 35px;
+}
+
+.freqVolSlider {
+    width: 240px;
+    height: 35px;
+}
+
+#freqAdjustContainer {
+    width: 300px;
+    border: 1px solid #DDD;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 15px;
+    background-color: #f8f8f8;
+
+}
+
+.freqSelected {
+    background-color: #f8f8f8;
+    color: rgb(83, 83, 83);
+    font-weight: bold;
+}
+
+.freqAdjustSize {
+    width: 200px;
+    height: 40px;
+}
+
+.editFreq {
+    color: blue;
+    cursor: pointer; 
+    cursor: hand;
+}
+
+.acrnFreq {
+    cursor: pointer; 
+    cursor: hand;
+    color: blue;
+}
+
+
+.acrnFreqPlaying {
+    cursor: pointer; 
+    cursor: hand;
+    color: red;
+}
+
+.acrnFreq:hover {
+    color: highlight ;
+}
+
+.editText {
+    display: inline;
+}
+
+.editText input {
+    width: 45px;
+    display: inline;
+}
+
+.editFrequency {
+    display: inline;
+}
+
+.editFrequency input {
+    width: 38px;
+    display: inline;
+}
+
+body {
+    padding-top: 60px;
+}
+
+.projLinks {
+    padding-left: 40px;
+}
+
+.projTitle {
+    font-style: bold;
+}
