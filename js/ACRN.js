@@ -174,7 +174,6 @@ function setFrequencyUpdateACRN(value) {
     generateACRNFrequencies();
     renderACRNFrequencies();
     resetFreqVolumes();
-
 }
 
 function setFrequency(freq) {
@@ -293,6 +292,7 @@ function playACRN() {
     }
 
     if (currentState !== states.PLAY_ACRN) {
+        generateACRNFrequencies();
         // start timer
         timer.resetStopwatch();
         timer.Timer.play();
