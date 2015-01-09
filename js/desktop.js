@@ -16,6 +16,11 @@ initUI = function() {
         },
         width: 40
     });
+
+	// makes volume slider longer
+	$("#volSliderContainer").width($("#volSliderContainer").width() + 200);
+	$("#volSlider").width($("#volSlider").width() + 200);
+
     $("#playToneButton").button();
     $("#playACRNButton").button();
     $("#stopButton").button();
