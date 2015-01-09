@@ -12,13 +12,13 @@
 }
 
 .volSliderSize {
-    width:120px; 
+    width:320px; 
     float:right; 
     margin-top: 4px;
 }
 
 .volSlider {
-    width: 180px;
+    width: 380px;
     height: 35px;
 }
 
