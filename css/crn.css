@@ -23,12 +23,12 @@
 }
 
 .freqVolSlider {
-    width: 240px;
+    width: 440px;
     height: 35px;
 }
 
 #freqAdjustContainer {
-    width: 300px;
+    width: 500px;
     border: 1px solid #DDD;
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
