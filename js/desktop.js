@@ -16,6 +16,7 @@ initUI = function() {
         },
         width: 40
     });
+
     $("#playToneButton").button();
     $("#playACRNButton").button();
     $("#stopButton").button();

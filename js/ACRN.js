@@ -362,7 +362,9 @@ function generateACRNFrequencies() {
     freqChoices = [Math.floor(currentFreq * 0.773 - 44.5), Math.floor(currentFreq * 0.903 - 21.5),
         Math.floor(currentFreq * 1.09 + 52), Math.floor(currentFreq * 1.395 + 26.5)];
     for (var i = 0; i < numFreqs; i++) {
-        freqVolumes[i] = defaultFreqVolume;
+    	freqVolumes[i] = defaultFreqVolume;
+    	if (localStorage.getItem(ACRN_FREQ_PREFIX + "vol" + i)) // load in saved volume for frequency-slot, if one exists
+    		freqVolumes[i] = localStorage.getItem(ACRN_FREQ_PREFIX + "vol" + i);
     }
     if (Modernizr.localstorage) {
         for (var i = 0; i < numFreqs; i++) {

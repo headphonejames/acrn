@@ -12,23 +12,23 @@
 }
 
 .volSliderSize {
-    width:120px; 
+    width:320px; 
     float:right; 
     margin-top: 4px;
 }
 
 .volSlider {
-    width: 180px;
+    width: 380px;
     height: 35px;
 }
 
 .freqVolSlider {
-    width: 240px;
+    width: 440px;
     height: 35px;
 }
 
 #freqAdjustContainer {
-    width: 300px;
+    width: 500px;
     border: 1px solid #DDD;
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
