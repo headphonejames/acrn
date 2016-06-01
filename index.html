@@ -107,7 +107,9 @@
             <br/>
             <section id="play">
                 <button type="button" class="btn btn-default" id="playToneButton" onclick="playTone();">Play Single Frequency</button>
-                <button type="button" class="btn btn-default" id="playACRNButton" onclick="playACRN();">Play ACRN</button>
+                <button type="button" class="btn btn-default" id="playACRNButton" onclick="playACRN(0.5);">Play ACRN</button>
+                <button type="button" class="btn btn-default" id="playLeft" onclick="playACRN(0);">Play ACRN Only Left</button>
+                <button type="button" class="btn btn-default" id="playRight" onclick="playACRN(1);">Play ACRN Only Right</button>
                 <button type="button" class="btn btn-default" id="stopButton" onclick="stop();">Stop Audio</button>
             </section>
             <br/>
