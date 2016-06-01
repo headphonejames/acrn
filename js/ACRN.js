@@ -286,10 +286,11 @@ function highlightCurrentFreq() {
     $("#" + ACRN_FREQ_PREFIX + currentPlayingFreqIndex).addClass("acrnFreqPlaying");
 }
 
-function playACRN() {
-    if (currentState === states.PLAY_TONE) {
+function playACRN(pan) {
+    if (currentState === states.PLAY_TONE || currentState == states.PLAY_ACRN) {
         stop();
     }
+
 
     if (currentState !== states.PLAY_ACRN) {
         generateACRNFrequencies();
@@ -301,9 +302,11 @@ function playACRN() {
         // High synth - scheduled as a mono synth (i.e. one instance keeps
         // running and the gate and frequency are switched)
         this.synth = new TriggerSynth(audiolet, this.currentFreq);
+        this.pan = new Pan(audiolet, pan);
 
         // Connect it to the output so we can hear it
-        this.synth.connect(audiolet.output);
+        this.synth.connect(this.pan);
+        this.pan.connect(audiolet.output);
 
         // first set the gate on the ADSR envelope to 1, then alternate to 0 
         // trigger release
@@ -362,9 +365,9 @@ function generateACRNFrequencies() {
     freqChoices = [Math.floor(currentFreq * 0.773 - 44.5), Math.floor(currentFreq * 0.903 - 21.5),
         Math.floor(currentFreq * 1.09 + 52), Math.floor(currentFreq * 1.395 + 26.5)];
     for (var i = 0; i < numFreqs; i++) {
-    	freqVolumes[i] = defaultFreqVolume;
-    	if (localStorage.getItem(ACRN_FREQ_PREFIX + "vol" + i)) // load in saved volume for frequency-slot, if one exists
-    		freqVolumes[i] = localStorage.getItem(ACRN_FREQ_PREFIX + "vol" + i);
+        freqVolumes[i] = defaultFreqVolume;
+        if (localStorage.getItem(ACRN_FREQ_PREFIX + "vol" + i)) // load in saved volume for frequency-slot, if one exists
+            freqVolumes[i] = localStorage.getItem(ACRN_FREQ_PREFIX + "vol" + i);
     }
     if (Modernizr.localstorage) {
         for (var i = 0; i < numFreqs; i++) {
