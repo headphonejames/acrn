@@ -416,8 +416,13 @@ function stop() {
             audiolet.scheduler.stop();
         }
         // Connect it to the output so we can hear it
-        this.synth.disconnect(this.pan);
-        this.pan.disconnect(audiolet.output);
+        if(currentState === states.PLAY_TONE) {
+            this.synth.disconnect(audiolet.output);
+        } else {
+            this.synth.disconnect(this.pan);
+            this.pan.disconnect(audiolet.output);
+        }
+        
         currentState = states.STOP;
         timer.Timer.pause();
     }
