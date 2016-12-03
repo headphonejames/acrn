@@ -266,10 +266,14 @@ Synth = function(audiolet, frequency) {
 extend(Synth, AudioletGroup);
 
 function playTone() {
-    if (currentState === states.PLAY_ACRN) {
+    if (currentState === states.PLAY_TONE) {
+        //toggle button to off if already on
         stop();
     }
-    if (currentState !== states.PLAY_TONE) {
+    else {
+        if (currentState === states.PLAY_ACRN) {
+            stop();
+        }
         this.synth = new Synth(audiolet, this.currentFreq);
         adjustVolume(currentVolume);
         // Connect it to the output so we can hear it
@@ -287,11 +291,14 @@ function highlightCurrentFreq() {
 }
 
 function playACRN() {
-    if (currentState === states.PLAY_TONE) {
+    if (currentState === states.PLAY_ACRN) {
+        //toggle button to off if already on
         stop();
     }
-
-    if (currentState !== states.PLAY_ACRN) {
+    else {
+        if (currentState === states.PLAY_TONE) {
+            stop();
+        }
         generateACRNFrequencies();
         // start timer
         timer.resetStopwatch();
