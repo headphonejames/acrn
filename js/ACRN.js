@@ -30,7 +30,7 @@ var currentState = states.STOP;
 var freqAdjust = null;
 var freqAdjustValue = null;
 
-// http://www.wiseguysynth.com/larry/convert/bpm_table.htm -> 1.5hz = 90bpm 
+// http://www.wiseguysynth.com/larry/convert/bpm_table.htm -> 1.5hz = 90bpm
 // we need quarter notes, so 90 * 4 = 360
 
 var tempo = 360;
@@ -82,10 +82,9 @@ $(document).ready(function() {
     timer = new (function() {
         var $stopwatch, // Stopwatch element on the page
                 incrementTime = 70, // Timer speed in milliseconds
-                currentTime = 0, // Current time in hundredths of a second
+                startTime,
                 updateTimer = function() {
-            $stopwatch.html(formatTime(currentTime));
-            currentTime += incrementTime / 10;
+            $stopwatch.html(formatTime(Math.round((Date.now()-startTime)/10)));
         },
                 init = function() {
             $stopwatch = $('#stopwatch');
@@ -93,7 +92,7 @@ $(document).ready(function() {
             timer.Timer.pause();
         };
         this.resetStopwatch = function() {
-            currentTime = 0;
+            startTime = Date.now();
             this.Timer.stop().once();
         };
         $(init);
@@ -312,7 +311,7 @@ function playACRN() {
         // Connect it to the output so we can hear it
         this.synth.connect(audiolet.output);
 
-        // first set the gate on the ADSR envelope to 1, then alternate to 0 
+        // first set the gate on the ADSR envelope to 1, then alternate to 0
         // trigger release
         var frequencyPattern = new PSequence([0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5,
             6, 6, 7, 7, 8, 8, 9, 9, 10, 10, 11, 11, -2, -1, -1, -1, -1, -1, -1,
