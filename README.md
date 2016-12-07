@@ -1,9 +1,10 @@
-ACRN = Acoustic Coordinated Reset Neuromodulation
+ACRN (Acoustic Coordinated Reset Neuromodulation)
 ====
 
-This is an implementation of the Acoustic Coordinated Reset Neuromodulation tinnitus treatment protocol in javascript.
-I'm currently hosting it on my [website](http://www.generalfuzz.net/acrn/).
+This is a web implementation of the Acoustic Coordinated Reset Neuromodulation tinnitus treatment stimulation protocol.
+
+It is currently hosted [here](http://www.generalfuzz.net/acrn/).
+
+ACRN is based on a [paper](http://www.ncbi.nlm.nih.gov/pubmed/22414611).
 
 Feel free to fix any bugs you find or add features.
-
-[Paper it is based on](http://www.thetinnitusclinic.co.uk/downloads/Tass%20et%20al_RNN%202012_Counteracting%20Tinnitus%20by%20Acoustic%20CR%20Neuromodulation.pdf)
