@@ -264,7 +264,7 @@ Synth = function(audiolet, frequency) {
 };
 extend(Synth, AudioletGroup);
 
-function playTone() {
+function playTone(pan) {
     if (currentState === states.PLAY_TONE) {
         //toggle button to off if already on
         stop();
@@ -276,7 +276,9 @@ function playTone() {
         this.synth = new Synth(audiolet, this.currentFreq);
         adjustVolume(currentVolume);
         // Connect it to the output so we can hear it
-        this.synth.connect(audiolet.output);
+        this.pan = new Pan(audiolet, pan);
+        this.synth.connect(this.pan);
+        this.pan.connect(audiolet.output);
         currentState = states.PLAY_TONE;
     }
 }
@@ -289,7 +291,7 @@ function highlightCurrentFreq() {
     $("#" + ACRN_FREQ_PREFIX + currentPlayingFreqIndex).addClass("acrnFreqPlaying");
 }
 
-function playACRN() {
+function playACRN(pan) {
     if (currentState === states.PLAY_ACRN) {
         //toggle button to off if already on
         stop();
@@ -307,9 +309,11 @@ function playACRN() {
         // High synth - scheduled as a mono synth (i.e. one instance keeps
         // running and the gate and frequency are switched)
         this.synth = new TriggerSynth(audiolet, this.currentFreq);
+        this.pan = new Pan(audiolet, pan);
 
         // Connect it to the output so we can hear it
-        this.synth.connect(audiolet.output);
+        this.synth.connect(this.pan);
+        this.pan.connect(audiolet.output);
 
         // first set the gate on the ADSR envelope to 1, then alternate to 0
         // trigger release
@@ -419,7 +423,7 @@ function stop() {
             audiolet.scheduler.stop();
         }
         // Connect it to the output so we can hear it
-        this.synth.disconnect(audiolet.output);
+        this.synth.disconnect(this.pan);
         currentState = states.STOP;
         timer.Timer.pause();
     }

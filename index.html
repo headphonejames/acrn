@@ -95,7 +95,7 @@
 
         <div class="container">
             <p>This is my attempt at implementing the <a href="http://www.tinnitus.org.uk/acoustic-cr-neuromodulation">Acoustic Coordinated Reset Neuromodulation</a> tinnitus treatment protocol 
-                using <a href="http://www.thetinnitusclinic.co.uk/downloads/Tass%20et%20al_RNN%202012_Counteracting%20Tinnitus%20by%20Acoustic%20CR%20Neuromodulation.pdf">this paper</a> as a guide. 
+                using <a href="http://www.sciencedirect.com/science/article/pii/S1053811913002553">this paper</a> as a guide. 
                 This page will probably only work with a relatively modern html browser.</p>
             <p>First try to match your tinnitus frequency using the "Play Single Frequency" button and then 
                 start the protocol with the "Play ACRN" button. 
@@ -106,8 +106,10 @@
                 reddit thread. <a href="http://www.generalfuzz.net/contact.php">Feedback and suggestions</a> are most welcome.</p>
             <br/>
             <section id="play">
-                <button type="button" class="btn btn-default" id="playToneButton" onclick="playTone();">Play Single Frequency</button>
-                <button type="button" class="btn btn-default" id="playACRNButton" onclick="playACRN();">Play ACRN</button>
+                <button type="button" class="btn btn-default" id="playToneButton" onclick="playTone(0.5);">Play Single Frequency</button>
+                <button type="button" class="btn btn-default" id="playACRNButton" onclick="playACRN(0.5);">Play ACRN</button>
+                <button type="button" class="btn btn-default" id="playLeft" onclick="playACRN(0);">Play ACRN Only Left</button>
+                <button type="button" class="btn btn-default" id="playRight" onclick="playACRN(1);">Play ACRN Only Right</button>
                 <button type="button" class="btn btn-default" id="stopButton" onclick="stop();">Stop Audio</button>
             </section>
             <br/>
